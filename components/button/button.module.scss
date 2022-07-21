@@ -1,0 +1,14 @@
+.btn{
+    border-radius: 8px;
+    min-width: 30px;
+    font-size:1rem;
+    cursor: pointer;
+    padding: .5rem .7rem;
+    outline: none;
+    &:is([disabled]):hover{
+        cursor: not-allowed;
+    }
+    &:not([disabled]):hover{
+        opacity: .7;
+    }
+  }
