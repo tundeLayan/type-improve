@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.success-background{
+  background: green;
+}
+
+.fail-background{
+  background: red;
+}
