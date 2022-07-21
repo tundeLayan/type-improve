@@ -1,0 +1,26 @@
+.navbar{
+    border: 1px solid;
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-inline-end: 2rem;
+    .timings{
+      display: flex;
+      gap:1rem;
+    }
+    .inputContainer{
+      margin-inline-start: 2rem;
+      width: 20%;
+      display: flex;
+      align-items: center;
+      h2{
+        display: inline-block;
+        flex:2;
+      }
+      input{
+        flex:3;
+      }
+    }
+  }
