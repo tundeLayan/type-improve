@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head'
-import Image from 'next/image'
+import { useSelector, useDispatch } from 'react-redux';
 
 import randomWords from "random-words";
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
@@ -8,6 +8,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import Input from "../components/input/input";
 import Header from "../components/header/header";
 import Button from "../components/button/button";
+import { storeWords } from '../redux/actions/wordAction';
 
 import styles from '../styles/Home.module.scss'
 
@@ -16,6 +17,9 @@ import { options } from '../utils';
 
 export default function Home() {
   const inputRef = useRef(null);
+  const {words: words2} = useSelector((state)=> state.words);
+  const dispatch = useDispatch();
+
   const [numberOfWords, setNumberOfWords] = useState(200);
   const [words, setWords] = useState([]);
   // in minutes
@@ -43,9 +47,14 @@ export default function Home() {
     inputActive && inputRef.current.focus();
   },[inputActive])
 
+  useEffect(() => {
+    if(words.length>0){
+      dispatch(storeWords(words));
+    }
+  }, [words])
+  
 
   const generateWords = () => {
-    // return randomWords(numberOfWords).join(" ")
     return randomWords(numberOfWords);
   }
 
@@ -56,6 +65,8 @@ export default function Home() {
     setIncorrect(0);
     setWordIndex(0);
     setCurrentCharIdx(-1);
+    setInputActive(false);
+
   }
 
 
@@ -125,7 +136,6 @@ export default function Home() {
     setSelectedTime(e.target.value);
   }
 
-  // console.log(words);
   return (
     <div className={styles.container}>
       <Head>
@@ -184,10 +194,10 @@ export default function Home() {
 
         </div>
 
-        {true && (
+        {inputActive && (
           <>
             <div className={styles.content} style={{border: "1px solid #2e2e2e", padding:"2rem", borderRadius:"8px"}}>
-              {words.map((wrd,idx)=>(
+              {words2.map((wrd,idx)=>(
                 <span key={idx}>
                   <span>
                     {wrd.split("").map((char, idx2)=>(
@@ -212,7 +222,6 @@ export default function Home() {
           <h2>Correct Words Per {selectedTime} Minute{selectedTime>1&&"s"}: </h2> <p>{correct}</p>
         </div>
         <div className={styles.card}>
-          {/* <h2>Score: </h2> <p>{Math.round((correct/(correct+incorrect))*100)} %</p> */}
           <h2>Score: </h2> <p>{correct}{" "}/{" "}{correct+incorrect}</p>
         </div>
         </div>

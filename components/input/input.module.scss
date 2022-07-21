@@ -1,5 +1,11 @@
+@import "../../public/css/screens.scss";
+@import "../../public/css/mixins.scss";
+
 .input{
     width: 100%;
     height: 40px;
     outline: none;
+    @include screen("inbetween"){
+      width: 90%;
   }
+}

@@ -1,0 +1,27 @@
+@import "./screens.scss";
+
+@mixin flex($direction, $justify, $align) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+}
+
+@mixin allProductsTableHeaderStyle($color, $background) {
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 24px;
+	color: $color;
+	background: $background;
+	min-width: 5rem;
+	text-align: center;
+	border-radius: 0.5rem;
+	text-transform: capitalize;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+
+	@include screen("tablet") {
+		font-size: 14px;
+	}
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 
 import styles from "./input.module.scss";
 
@@ -7,7 +7,6 @@ const Input = React.forwardRef(({type="text",...rest}, ref) => (
     <input data-testid="text-input" ref={ref} className={styles.input} {...{type}} {...rest} />
   ));
 
-// Search.displayName = "Search";
 
-export default Input;
+export default memo(Input);
 

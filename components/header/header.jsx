@@ -10,7 +10,6 @@ const Header = ({options, selectedTime, handleInputChange, setCountdown, setSele
     setMode(e.target.value);
   }
 
-  console.log("mode", mode);
   const getColor = (label, selectedTime, type) => {
     switch(type){
         case "button":

@@ -1,0 +1,1 @@
+export const STORE_WORDS = "STORE_WORDS";

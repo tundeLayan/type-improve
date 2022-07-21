@@ -1,11 +1,19 @@
+@import "../../public/css/screens.scss";
+@import "../../public/css/mixins.scss";
+
 .navbar{
     border: 1px solid;
-    height: 4rem;
+    min-height: 4rem;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding-inline-end: 2rem;
+    @include screen("inbetween"){
+        @include flex(column, null, center);
+        gap: 1rem;
+        padding-block: 1rem;
+    }
     .timings{
       display: flex;
       gap:1rem;
